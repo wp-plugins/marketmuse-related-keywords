@@ -13,7 +13,13 @@ Suggests keywords relevant to the topic of your blog post. Adding relevant keywo
 
 == Description ==
 
-The MarketMuse Relevant Keywords tool helps bloggers generate more organic traffic and improve their content in a meaningful way. As you edit your blog post, check it for related keywords that you might've missed including. As you add in related keywords into your content, you'll improve the quality of your post and your post will generate more organic traffic.
+'Related keywords' are keywords that are topically-related to your primary keywords. By adding in related keywords into your content, you'll boost organic search traffic.
+
+Topical relevance has recently become critical, since Google Hummingbird (2013) and Panda 4.0 (2014) updates are mostly focused on analyzing topical relevance within content. In other words, using more related keywords in your content boosts Topical Authority and ranks your content higher in Google search.
+
+The MarketMuse Relevant Keywords tool helps you check for related keywords that you may have missed. As you add related keywords to your content, you'll improve the quality of your post and your post will generate more organic traffic.
+
+In addition to this plugin, check out our fully-featured tools at http://MarketMuse.co.
 
 
 == Installation ==
@@ -22,29 +28,34 @@ Installation is very easy. Just:
 
 1. Upload the plugin folder to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
+3. As you edit a post, you'll see the MarketMuse sidebar to the right of the post
 
 
 == Frequently Asked Questions ==
 
-= Does this approach work? =
+= Can this actually help me generate more traffic? =
 
-Absolutely! As search engines crawl, they score webpages in terms of how comprehensively they cover certain topics. As you create content and mention more relevant topics, you boost your authority score for that topic, which results in a higher search rank and, in turn, more organic traffic.
+Absolutely! Search engines score webpages in terms of how comprehensively your post covers the topic you're writing about. As you use more relevant keywords in your content, you boost your Topical Authority score, which results in a higher search rank and more traffic.
 
 = Is this keyword spamming? =
 
-It shouldn't be! Our engine suggests related keywords. At that point, it's up to you to figure out how you want to use that data in your content. We suggest that you use this keyword data to write more relevant, interesting content -- please don't spam!
+It shouldn't be! Our engine suggests related keywords. At that point, it's up to you to figure out how you want to use that data in your content. If you use a keyword too often, our sidebar will actually alert you. We don't encourage keyword spamming as it can hurt your traffic.
 
-= How can I get more keywords? =
 
-Just mozy on down to our website at http://MarketMuse.co for a more feature-rich version of this same tool. There, you can get more keyword suggestions and get more specific data on your relevant keywords.
+= How can I get more keyword suggestions? =
+
+Just mozy on down to our website at http://MarketMuse.co for a more feature-rich version of this same tool. Our Blog Analysis tool can generate over 50 keyword suggestions as well as helpful statistics around how much traffic each relevant keyword can drive.
 
 
 == Screenshots ==
 
-None yet. Stay posted..
+1. MarketMuse suggests topically-relevant keywords
 
 
 == Changelog ==
+
+= 1.0.1 = 
+* Minor tweaks
 
 = 1.0.0 =
 * Initial version
