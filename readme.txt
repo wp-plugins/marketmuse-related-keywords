@@ -13,13 +13,13 @@ Suggests keywords relevant to the topic of your blog post. Adding relevant keywo
 
 == Description ==
 
-'Related keywords' are keywords that are topically-related to your primary keywords. By adding in related keywords into your content, you'll boost organic search traffic.
+'Related keywords' are keywords that are topically-related to your Primary keywords. By adding in related keywords into your content, you'll boost organic search traffic.
 
-Topical relevance has recently become critical, since Google Hummingbird (2013) and Panda 4.0 (2014) updates are mostly focused on analyzing topical relevance within content. In other words, using more related keywords in your content boosts Topical Authority and ranks your content higher in Google search.
+Topical relevance is very important since Google's Hummingbird (2013) and Panda 4.0 (2014) search engine updates are mostly focused on analyzing topical relevance within content. In other words, using more related keywords in your content boosts Topical Authority and increases your ranking in Google search.
 
 The MarketMuse Relevant Keywords tool helps you check for related keywords that you may have missed. As you add related keywords to your content, you'll improve the quality of your post and your post will generate more organic traffic.
 
-In addition to this plugin, check out our fully-featured tools at http://MarketMuse.co.
+In addition to this plugin, check out our fully-featured tools at http://MarketMuse.co
 
 
 == Installation ==
