@@ -66,6 +66,9 @@ class MM_Related_Keywords_Admin {
 
 		// Change admin footer
 		add_filter( 'admin_footer_text', array( $this, 'change_footer_admin' ) );
+
+		// Register plugin settings
+		add_action( 'admin_init', array( $this, 'init_settings' ) );
 	}
 
 	/**
@@ -103,17 +106,10 @@ class MM_Related_Keywords_Admin {
 				MM_Related_Keywords::VERSION
 			);
 
-			wp_register_style(
-				'tag-it',
-				plugins_url( 'assets/css/libs/tag-it.css', __FILE__ ),
-				array(),
-				MM_Related_Keywords::VERSION
-			);
-
 			wp_enqueue_style(
 				$this->plugin_slug .'-admin-styles',
 				plugins_url( 'assets/css/admin.css', __FILE__ ),
-				array( 'bootstrap-tooltips', 'tag-it' ),
+				array( 'bootstrap-tooltips' ),
 				MM_Related_Keywords::VERSION
 			);
 		}
@@ -136,13 +132,6 @@ class MM_Related_Keywords_Admin {
 			global $post;
 
 			wp_register_script(
-				'jquery-tagit',
-				plugins_url( 'assets/js/libs/tag-it.js', __FILE__ ),
-				array( 'jquery-ui-widget', 'jquery-ui-autocomplete' ),
-				MM_Related_Keywords::VERSION
-			);
-
-			wp_register_script(
 				'bootstrap-tooltips',
 				plugins_url( 'assets/js/libs/bootstrap.js', __FILE__ ),
 				array( 'jquery' ),
@@ -152,7 +141,7 @@ class MM_Related_Keywords_Admin {
 			wp_enqueue_script(
 				$this->plugin_slug . '-admin-script',
 				plugins_url( 'assets/js/admin.js', __FILE__ ),
-				array( 'jquery-tagit', 'bootstrap-tooltips' ),
+				array( 'bootstrap-tooltips' ),
 				MM_Related_Keywords::VERSION
 			);
 
@@ -160,13 +149,13 @@ class MM_Related_Keywords_Admin {
 				$this->plugin_slug . '-admin-script',
 				'MM_Settings',
 				array(
-					'errorMsg'         => __( 'For more targeted suggestions, please include 2 or more keywords', $this->plugin_slug ),
-					'buttonFetching'   => __( 'Fetching...', $this->plugin_slug ),
+					'buttonFetching'   => __( 'Fetching..', $this->plugin_slug ),
 					'buttonSubmit'     => __( 'Analyze', $this->plugin_slug ),
 					'headingTopics'    => __( 'Topics', $this->plugin_slug ),
 					'headingFrequency' => __( 'Frequency', $this->plugin_slug ),
 					'headingTooltip'   => __( 'Number of times this topic appears in your content', $this->plugin_slug ),
-					'keywords'         => ( get_post_meta( $post->ID, '_mm_keywords', true ) ) ? json_encode( array_keys( get_post_meta( $post->ID, '_mm_keywords', true ) ) ) : ''
+					'keywords'         => ( get_post_meta( $post->ID, '_mm_keywords', true ) ) ? json_encode( array_keys( get_post_meta( $post->ID, '_mm_keywords', true ) ) ) : '',
+					'settings'         => get_option( 'mm_settings' )
 				)
 			);
 
@@ -322,6 +311,46 @@ class MM_Related_Keywords_Admin {
 		}
 
 		echo $text . $footer_text;
+	}
+
+	/**
+	 * Initialize settings API
+	 *
+	 * @since    1.1.0
+	 * @return   void
+	 */
+	public function init_settings() {
+
+		register_setting( 'mm_settings_page', 'mm_settings' );
+
+		add_settings_section(
+			'mm_settings_section',
+			'',
+			'',
+			'mm_settings_page'
+		);
+
+		add_settings_field(
+			'public_token',
+			__( 'API Key', $this->plugin_slug ),
+			array( $this, 'mm_fields_render' ),
+			'mm_settings_page',
+			'mm_settings_section'
+		);
+
+	}
+
+	/**
+	 * Render setting fields
+	 *
+	 * @since    1.1.0
+	 * @return   string
+	 */
+	public function mm_fields_render() {
+		$options = get_option( 'mm_settings' );
+	?>
+		<input type="text" name="mm_settings[public_token]" value="<?php echo $options['public_token']; ?>" class="regular-text">
+	<?php
 	}
 
 }

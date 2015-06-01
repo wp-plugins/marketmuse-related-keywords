@@ -5,7 +5,6 @@
 	$(function () {
 		// Cache most used elements
 		var $results      = $('#mm-results'),
-			$errorArea    = $('#mm-error'),
 			$inputField   = $('#mm-keywords'),
 			$submitButton = $('#mm-keywords-submit'),
 			keywords      = [],
@@ -21,11 +20,9 @@
 			});
 		};
 
-		// Resize keyword box automatically
-		$('#mm-keyword-tags').tagit({
-			singleField: true,
-			allowSpaces: true,
-			singleFieldNode: $inputField
+		// Enable keyword count on HTML text editor
+		$('.wp-editor-area').on('keyup', function() {
+			countKeyWords($(this).val());
 		});
 
 		// Enable tooptip support
@@ -97,7 +94,7 @@
 				odd = (i++ % 2 === 0) ? 'class="mm-odd"' : '';
 
 				results += '<tr ' + odd + '>';
-				results +=     '<td>' + value + '</td>';
+				results +=     '<td>' + $('<div/>').text(value).html() + '</td>';
 				results +=     '<td class="mm-count" data-mm-keyword="' + value + '">&mdash;</td>';
 				results += '</tr>';
 			});
@@ -149,17 +146,6 @@
 				}
 			});
 
-			// Make sure at least 2 keywords are present
-			if (inputKeywords.length < 2) {
-				$errorArea.html(
-					'<p class="mm-error">' +
-						'<small>' + MM_Settings.errorMsg + '</small>' +
-					'</p>'
-				);
-			} else {
-				$errorArea.html('');
-			}
-
 			// Disable input button
 			disableButton(true);
 
@@ -168,13 +154,21 @@
 
 			// Fetch keywords from external server via AJAX
 			var request = $.post(
-				'http://prod.marketmuse.co:8000/api/search',
+				'http://prod.marketmuse.com:8000/api/search_with_data',
 				{
-					search_query: searchQuery
+					search_query: searchQuery,
+					// pass user_key specified in 3scale
+					user_key: '8cce15356351679e4d4ee1461c803d06',
+					// pass public token if present
+					public_token: MM_Settings.settings.public_token
 				},
 				function (response) {
 					$.each(response.data, function (index, value) {
-						keywords.push(value.term);
+						// If the public token is invalid the 'attractiveness'
+						// attribute will return as -1 so filter out those
+						if (value.attractiveness !== -1) {
+							keywords.push(value.term);
+						}
 					});
 
 					// Insert input keywords into results
@@ -203,7 +197,7 @@
 		// Fetch results on button click and when pressing "Enter" key
 		$submitButton.on('click', fetchResults);
 
-		$('.tagit-new input').on('keypress', function (e) {
+		$inputField.on('keypress', function (e) {
 			if (e.which === 13) {
 				e.preventDefault();
 				fetchResults();

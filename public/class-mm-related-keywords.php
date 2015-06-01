@@ -23,7 +23,7 @@ class MM_Related_Keywords {
 	 *
 	 * @var     string
 	 */
-	const VERSION = '1.0.0';
+	const VERSION = '1.2.3';
 
 	/**
 	 * Unique identifier for plugin.

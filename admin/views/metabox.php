@@ -9,17 +9,14 @@
 ?>
 
 <p class="howto">
-	<?php _e( 'Enter two or more topics that this post covers. Separate topics with commas.', $this->plugin_slug ); ?>
+	<?php _e( 'Enter topic(s) that this post covers. Separate topics with commas.', $this->plugin_slug ); ?>
 </p>
 
 <div class="mm-clearfix">
 	<input type="text" id="mm-keywords" name="mm-keywords">
-	<ul id="mm-keyword-tags"></ul>
 	<input type="button" id="mm-keywords-submit" class="button" value="<?php _e( 'Analyze', $this->plugin_slug ); ?>" />
 	<?php wp_nonce_field( $this->plugin_slug, $this->plugin_slug . '-nonce' ); ?>
 </div>
-
-<div id="mm-error"></div>
 
 <div id="mm-results">
 	<?php
@@ -68,8 +65,16 @@
 	<?php endif; ?>
 </div>
 
+<?php
+	$options = get_option( 'mm_settings' );
+
+	if ( empty( $options['public_token'] ) ) :
+?>
 <p>
 	<small>
-		<?php printf( __( 'Visit <a href="%s" target="_blank">MarketMuse.co</a> for more suggestions', $this->plugin_slug ), 'http://marketmuse.co/' ); ?>
+		<?php _e( 'Want to unlock 50 suggestions?', $this->plugin_slug ); ?><br>
+		<?php printf( __( 'To get API key, please contact us at <a href="%s" target="_blank">MarketMuse.com</a>', $this->plugin_slug ), 'https://www.marketmuse.com/' ); ?><br>
+		<?php printf( __( 'Enter the key on our <a href="%s">settings page</a>.', $this->plugin_slug ), admin_url( 'options-general.php?page=' . $this->plugin_slug ) ); ?>
 	</small>
 </p>
+<?php endif; ?>

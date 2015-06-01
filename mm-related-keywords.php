@@ -11,7 +11,7 @@
  * @wordpress-plugin
  * Plugin Name:       MarketMuse Related Keywords
  * Description:       Get keyword suggestions using Market Muse API.
- * Version:           1.0.1
+ * Version:           1.2.3
  * Author:            ViV Web Solutions
  * Author URI:        http://vivwebsolutions.com/
  * Text Domain:       mm-related-keywords
