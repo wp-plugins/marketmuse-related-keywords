@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: MarketMuse Related Keywords\n"
-"POT-Creation-Date: 2015-06-01 21:31-0000\n"
+"POT-Creation-Date: 2015-06-11 20:12-0000\n"
 "PO-Revision-Date: 2015-05-17 07:57-0000\n"
 "Last-Translator: \n"
 "Language-Team: ViV Web Solutions\n"
@@ -22,42 +22,52 @@ msgid "Fetching.."
 msgstr ""
 
 #: ../admin/class-mm-related-keywords-admin.php:153
-#: ../admin/views/metabox.php:17
+#: ../admin/views/metabox.php:21
 msgid "Analyze"
 msgstr ""
 
 #: ../admin/class-mm-related-keywords-admin.php:154
-#: ../admin/views/metabox.php:35
+#: ../admin/views/metabox.php:52
 msgid "Topics"
 msgstr ""
 
 #: ../admin/class-mm-related-keywords-admin.php:155
-#: ../admin/views/metabox.php:37
+#: ../admin/views/metabox.php:54
 msgid "Frequency"
 msgstr ""
 
 #: ../admin/class-mm-related-keywords-admin.php:156
-#: ../admin/views/metabox.php:36
+#: ../admin/views/metabox.php:53
 msgid "Number of times this topic appears in your content"
 msgstr ""
 
-#: ../admin/class-mm-related-keywords-admin.php:177
-#: ../admin/class-mm-related-keywords-admin.php:214
+#: ../admin/class-mm-related-keywords-admin.php:157
+#: ../admin/views/metabox.php:43
+msgid "Focus keyword count"
+msgstr ""
+
+#: ../admin/class-mm-related-keywords-admin.php:158
+#: ../admin/views/metabox.php:48
+msgid "Related topics covered"
+msgstr ""
+
+#: ../admin/class-mm-related-keywords-admin.php:179
+#: ../admin/class-mm-related-keywords-admin.php:216
 msgid "MarketMuse Related Keywords"
 msgstr ""
 
-#: ../admin/class-mm-related-keywords-admin.php:178
+#: ../admin/class-mm-related-keywords-admin.php:180
 msgid "Related Keywords"
 msgstr ""
 
-#: ../admin/class-mm-related-keywords-admin.php:309
+#: ../admin/class-mm-related-keywords-admin.php:311
 #, php-format
 msgid ""
 "Plugin development and design by <a href=\"%s\" target=\"_blank\">ViV Web "
 "Solutions</a>"
 msgstr ""
 
-#: ../admin/class-mm-related-keywords-admin.php:335
+#: ../admin/class-mm-related-keywords-admin.php:337
 msgid "API Key"
 msgstr ""
 
@@ -76,22 +86,29 @@ msgid ""
 "\" target=\"_blank\">marketmuse.com</a>"
 msgstr ""
 
-#: ../admin/views/metabox.php:12
-msgid "Enter topic(s) that this post covers. Separate topics with commas."
+#: ../admin/views/admin.php:33
+#, php-format
+msgid ""
+"To request an API key, please visit <a href=\"%s\" target=\"_blank"
+"\">marketmuse.com</a> and Contact Us"
 msgstr ""
 
-#: ../admin/views/metabox.php:75
+#: ../admin/views/metabox.php:16
+msgid "Enter a keyword that this post covers."
+msgstr ""
+
+#: ../admin/views/metabox.php:93
 msgid "Want to unlock 50 suggestions?"
 msgstr ""
 
-#: ../admin/views/metabox.php:76
+#: ../admin/views/metabox.php:94
 #, php-format
 msgid ""
 "To get API key, please contact us at <a href=\"%s\" target=\"_blank"
 "\">MarketMuse.com</a>"
 msgstr ""
 
-#: ../admin/views/metabox.php:77
+#: ../admin/views/metabox.php:95
 #, php-format
 msgid "Enter the key on our <a href=\"%s\">settings page</a>."
 msgstr ""

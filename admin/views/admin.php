@@ -29,6 +29,8 @@
 			<img src="<?php echo plugins_url( 'assets/img/logo.jpg', dirname( __FILE__ ) ); ?>" alt="<?php _e( 'MarketMuse Logo', $this->plugin_slug ); ?>" width="200" height="45">
 			<br>
 			<?php printf( __( 'Boost organic traffic for your SEO and content marketing! Visit <a href="%s" target="_blank">marketmuse.com</a>', $this->plugin_slug ), 'https://marketmuse.com/' ); ?>
+			<br>
+			<?php printf( __( 'To request an API key, please visit <a href="%s" target="_blank">marketmuse.com</a> and Contact Us', $this->plugin_slug ), 'https://marketmuse.com/' ); ?>
 		</p>
 
 	</form>

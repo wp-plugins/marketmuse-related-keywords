@@ -22,6 +22,10 @@
 	padding: 5px;
 }
 
+.mm-results-table tbody tr:first-child td {
+	background: #ddd;
+}
+
 .mm-odd td {
 	background: #f1f1f1;
 }

@@ -4,7 +4,7 @@ Donate link: https://www.marketmuse.com
 Tags: keywords, seo, content, content marketing, related keywords, keyword optimization
 Requires at least: 3.8
 Tested up to: 4.2.2
-Stable tag: 1.2.3
+Stable tag: 1.3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -44,7 +44,7 @@ It shouldn't be! Our engine suggests related keywords. At that point, it's up to
 
 = How can I get more keyword suggestions? =
 
-Just mozy on down to our website at https://www.MarketMuse.com for a more feature-rich version of this same tool. Our Blog Analysis tool can generate over 50 keyword suggestions as well as helpful statistics around how much traffic each relevant keyword can drive.
+To get 50 keyword suggestions, just visit us at https://www.MarketMuse.com and click Contact Us to request an API key. On that site you'll also find our Blog Analysis tool which generates helpful statistics around your content quality as well.
 
 
 == Screenshots ==
@@ -53,6 +53,9 @@ Just mozy on down to our website at https://www.MarketMuse.com for a more featur
 
 
 == Changelog ==
+
+= 1.3.0 =
+* Show additional keyword metrics
 
 = 1.2.3 =
 * Change API key setting name

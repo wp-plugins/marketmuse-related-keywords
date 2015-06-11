@@ -149,13 +149,15 @@ class MM_Related_Keywords_Admin {
 				$this->plugin_slug . '-admin-script',
 				'MM_Settings',
 				array(
-					'buttonFetching'   => __( 'Fetching..', $this->plugin_slug ),
-					'buttonSubmit'     => __( 'Analyze', $this->plugin_slug ),
-					'headingTopics'    => __( 'Topics', $this->plugin_slug ),
-					'headingFrequency' => __( 'Frequency', $this->plugin_slug ),
-					'headingTooltip'   => __( 'Number of times this topic appears in your content', $this->plugin_slug ),
-					'keywords'         => ( get_post_meta( $post->ID, '_mm_keywords', true ) ) ? json_encode( array_keys( get_post_meta( $post->ID, '_mm_keywords', true ) ) ) : '',
-					'settings'         => get_option( 'mm_settings' )
+					'buttonFetching'    => __( 'Fetching..', $this->plugin_slug ),
+					'buttonSubmit'      => __( 'Analyze', $this->plugin_slug ),
+					'headingTopics'     => __( 'Topics', $this->plugin_slug ),
+					'headingFrequency'  => __( 'Frequency', $this->plugin_slug ),
+					'headingTooltip'    => __( 'Number of times this topic appears in your content', $this->plugin_slug ),
+					'focusKeywordCount' => __( 'Focus keyword count', $this->plugin_slug ),
+					'relatedTopics'     => __( 'Related topics covered', $this->plugin_slug ),
+					'keywords'          => ( get_post_meta( $post->ID, '_mm_keywords', true ) ) ? json_encode( array_keys( get_post_meta( $post->ID, '_mm_keywords', true ) ) ) : '',
+					'settings'          => get_option( 'mm_settings' )
 				)
 			);
 

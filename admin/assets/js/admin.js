@@ -8,7 +8,8 @@
 			$inputField   = $('#mm-keywords'),
 			$submitButton = $('#mm-keywords-submit'),
 			keywords      = [],
-			inputKeywords = [];
+			inputKeywords = [],
+			keywordsExist;
 
 		if ( MM_Settings.keywords ) {
 			keywords = $.parseJSON(MM_Settings.keywords);
@@ -38,6 +39,8 @@
 		 * @return void
 		 */
 		function countKeyWords(content) {
+			keywordsExist = 0;
+
 			for (var i = keywords.length - 1; i >= 0; i--) {
 				var regex = new RegExp(keywords[i], 'gi'),
 					count = content.match(regex);
@@ -47,6 +50,9 @@
 				var $countCell = $('td[data-mm-keyword="' + keywords[i] + '"]');
 
 				if (count) {
+					if (count.length > 0) {
+						keywordsExist++;
+					}
 					// If there are less than 8 occurrences display a checkmark with the count
 					// else change the count color and remove checkmark
 					if (count.length > 0 && count.length <= 8) {
@@ -64,11 +70,18 @@
 						$countCell.removeClass('mm-checkmark');
 						$countCell.html(count.length);
 					}
+
+					if (keywords[i] === keywords[0]) {
+						$('#mm-focus-count').text(count.length);
+						$('#mm-focus-percent').text(((count.length / (tinyMCE.activeEditor.getContent({format : 'text'}).replace(/['";:,.?¿\-!¡]+/g, '').match(/\S+/g) || []).length) * 100).toFixed(0));
+					}
 				} else {
 					$countCell.html('&mdash;');
 					$countCell.removeClass('mm-checkmark');
 				}
 			}
+
+			$('#mm-keywords-exist').text(keywordsExist);
 		}
 
 		/**
@@ -83,8 +96,16 @@
 				i       = 0;
 
 			results += '<thead>';
+			results += '<tr>';
+			results +=     '<td colspan="2">' + MM_Settings.focusKeywordCount + ': <span id="mm-focus-count">0</span> (<span id="mm-focus-percent">0</span>%)</td>';
+			results += '</tr>';
+			results += '<tr>';
+			results +=     '<td colspan="2">' + MM_Settings.relatedTopics + ': <span id="mm-keywords-exist">0</span> / <span id="mm-keywords-total">' + keywords.length + '</span></td>';
+			results += '</tr>';
+			results += '<tr>';
 			results +=     '<th>' + MM_Settings.headingTopics + '</th>';
 			results +=     '<th data-toggle="tooltip" data-placement="top" title="' + MM_Settings.headingTooltip + '">' + MM_Settings.headingFrequency + ' <span class="dashicons dashicons-editor-help"></span></th>';
+			results += '</tr>';
 			results += '</thead>';
 
 			results += '<tbody>';

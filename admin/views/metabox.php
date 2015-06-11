@@ -6,37 +6,55 @@
  * @author    Javier Villanueva <javier@vivwebsolutions.com>
  * @copyright 2014 ViV Web Solutions
  */
+
+global $post;
+
+$keywords = get_post_meta( $post->ID, '_mm_keywords', true );
 ?>
 
 <p class="howto">
-	<?php _e( 'Enter topic(s) that this post covers. Separate topics with commas.', $this->plugin_slug ); ?>
+	<?php _e( 'Enter a keyword that this post covers.', $this->plugin_slug ); ?>
 </p>
 
 <div class="mm-clearfix">
-	<input type="text" id="mm-keywords" name="mm-keywords">
+	<input type="text" id="mm-keywords" name="mm-keywords" value="<?php echo is_array( $keywords ) ? key( $keywords ) : ''; ?>">
 	<input type="button" id="mm-keywords-submit" class="button" value="<?php _e( 'Analyze', $this->plugin_slug ); ?>" />
 	<?php wp_nonce_field( $this->plugin_slug, $this->plugin_slug . '-nonce' ); ?>
 </div>
 
 <div id="mm-results">
 	<?php
-		global $post;
-
 		$i = 0;
 
-		$keywords = get_post_meta( $post->ID, '_mm_keywords', true );
+		$content  = get_post_field( 'post_content', $post->ID );
+		$words    = str_word_count( strip_tags( $content ) );
 
 		if ( ! empty( $keywords ) ) :
+
+			function onArray($value) { return $value > 0; }
+			$on_array = array_filter( $keywords, 'onArray' );
 	?>
 
 	<table class="mm-results-table">
 
 		<thead>
-			<th><?php _e( 'Topics', $this->plugin_slug ); ?></th>
-			<th data-toggle="tooltip" data-placement="top" title="<?php _e( 'Number of times this topic appears in your content', $this->plugin_slug ); ?>">
-				<?php _e( 'Frequency', $this->plugin_slug ); ?>
-				<span class="dashicons dashicons-editor-help"></span>
-			</th>
+			<tr>
+				<td colspan="2">
+					<?php _e( 'Focus keyword count', $this->plugin_slug ); ?>: <span id="mm-focus-count"><?php echo array_shift( array_values( $keywords ) ); ?></span> (<span id="mm-focus-percent"><?php echo round( ( array_shift( array_values( $keywords ) ) / $words ) * 100 ); ?></span>%)
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<?php _e( 'Related topics covered', $this->plugin_slug ); ?>: <span id="mm-keywords-exist"><?php echo count( $on_array ); ?></span> / <span id="mm-keywords-total"><?php echo count( $keywords ); ?></span>
+				</td>
+			</tr>
+			<tr>
+				<th><?php _e( 'Topics', $this->plugin_slug ); ?></th>
+				<th data-toggle="tooltip" data-placement="top" title="<?php _e( 'Number of times this topic appears in your content', $this->plugin_slug ); ?>">
+					<?php _e( 'Frequency', $this->plugin_slug ); ?>
+					<span class="dashicons dashicons-editor-help"></span>
+				</th>
+			</tr>
 		</thead>
 
 		<tbody>
