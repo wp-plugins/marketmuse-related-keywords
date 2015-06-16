@@ -54,6 +54,9 @@ To get 50 keyword suggestions, just visit us at https://www.MarketMuse.com and c
 
 == Changelog ==
 
+= 1.3.1 =
+* Move API desciption text
+
 = 1.3.0 =
 * Show additional keyword metrics
 
