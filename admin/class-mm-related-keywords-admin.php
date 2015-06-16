@@ -352,6 +352,7 @@ class MM_Related_Keywords_Admin {
 		$options = get_option( 'mm_settings' );
 	?>
 		<input type="text" name="mm_settings[public_token]" value="<?php echo $options['public_token']; ?>" class="regular-text">
+		<p class="description"><?php printf( __( 'To request an API key, please visit <a href="%s" target="_blank">marketmuse.com</a> and Contact Us', $this->plugin_slug ), 'https://marketmuse.com/' ); ?></p>
 	<?php
 	}
 
